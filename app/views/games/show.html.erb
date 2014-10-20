@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Player1:</b>
+  <%= @game.player1_id %>
+</p>
+
+<p>
+  <b>Player2:</b>
+  <%= @game.player2_id %>
+</p>
+
+<p>
+  <b>Total games:</b>
+  <%= @game.total_games %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%= @game.name %>
+</p>
+
+<p>
+  <b>First move:</b>
+  <%= @game.first_move %>
+</p>
+
+<p>
+  <b>Next player:</b>
+  <%= @game.next_player %>
+</p>
+
+<p>
+  <b>Winner:</b>
+  <%= @game.winner %>
+</p>
+
+
+<%= link_to 'Edit', edit_game_path(@game) %> |
+<%= link_to 'Back', games_path %>

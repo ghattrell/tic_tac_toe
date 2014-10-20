@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  player1_id: 1
+  player2_id: 1
+  total_games: 1
+  name: MyString
+  first_move: 1
+  next_player: 1
+  winner: 1
+
+two:
+  player1_id: 1
+  player2_id: 1
+  total_games: 1
+  name: MyString
+  first_move: 1
+  next_player: 1
+  winner: 1

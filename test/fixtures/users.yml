@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  first_name: MyString
+  last_name: MyString
+  image: MyText
+  wins: 1
+  losses: 1
+  draws: 1
+  email: MyString
+  password_digest: MyString
+  win_percentage: MyString
+
+two:
+  first_name: MyString
+  last_name: MyString
+  image: MyText
+  wins: 1
+  losses: 1
+  draws: 1
+  email: MyString
+  password_digest: MyString
+  win_percentage: MyString

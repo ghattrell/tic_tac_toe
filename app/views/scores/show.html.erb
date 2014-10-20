@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Winner:</b>
+  <%= @score.winner_id %>
+</p>
+
+<p>
+  <b>Loser:</b>
+  <%= @score.loser_id %>
+</p>
+
+<p>
+  <b>Draw:</b>
+  <%= @score.draw %>
+</p>
+
+
+<%= link_to 'Edit', edit_score_path(@score) %> |
+<%= link_to 'Back', scores_path %>
