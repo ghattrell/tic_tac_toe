@@ -7,41 +7,52 @@ class Game < ActiveRecord::Base
     has_one :score 
 
 
-  #   def initialize
+
 
   # @board = [nil, nil, nil, nil, nil, nil, nil, nil, nil]
   # @takensquares = []
 
-  # @winning_moves = [
-  #   ['a1','a2', 'a3'],
-  #   ['b1', 'b2', 'b3'],
-  #   ['c1', 'c2', 'c3'],
-  #   ['a1', 'a2', 'a3'],
-  #   ['a2', 'b2', 'b2'],
-  #   ['a3', 'b3', 'c3'],
-  #   ['a1', 'b2', 'c3'],
-  #   ['c1', 'b2', 'a3']
-  # ]
+  # @winning_moves  = [
+  #     [ 0, 1, 2], 
+  #     [ 3, 4, 5], 
+  #     [ 6, 7, 8], 
+  #     [ 0, 3, 6], 
+  #     [ 1, 4, 7], 
+  #     [ 2, 5, 8], 
+  #     [ 0, 4, 8], 
+  #     [ 6, 4, 2]]
 
   # end
 
   # def player_symbol
-  #   @player1 = rand() > 0.5 ? 'X' : 0
-  #   @player2 = @player1 == 'X' ? 'O' : 'X'
-
-  #   puts "Player 1 you are #{@player1}"
-  #   puts "Player 2 you are #{@player2}"
-
-  #   binding.pry
-
-  #   puts "debug"
+  #   @player1_symbol = rand() > 0.5 ? 'X' : 0
+  #   @player2_symbol = @player1_symbol == 'X' ? 'O' : 'X'
+  #   if @player1_symbol == 'X'
+  #     player1_turn
+  #   else
+  #     player2_turn
+  #   end
   # end
 
-    # if @player1 == 'X'
-    #   player1_turn
-    # else
-    #   player2_turn
-    # end
+  # def player1_turn
+  #   @move
+
+  def build_board
+    board = Array.new(9)
+    self.moves.each do |move|
+      if move.player_id == self.player1_id
+        board[move.cell_chosen] = "X"
+      else
+        board[move.cell_chosen] = "O"
+      end
+    end
+      board
+  end
+
+   
+   
+
+   
 
 
 end

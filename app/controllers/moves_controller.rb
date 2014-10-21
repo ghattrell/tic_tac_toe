@@ -23,19 +23,26 @@ class MovesController < ApplicationController
 
   # GET /moves/new
   # GET /moves/new.json
-  # def new
-  #   @move = Move.new
+  def new
+    @move = Move.create!(cell_chosen: params[:cell_chosen].to_i, player_id: current_user.id, game_id: params[:game_id])
+    @game = Game.find params[:game_id]
+    
+    #Check won
+    #Check draw
+    #If neither redirect_to @game
+    redirect_to @game
 
-  #   # respond_to do |format|
-  #   #   format.html # new.html.erb
-  #   #   format.json { render json: @move }
-  #   # end
-  # end
+    #   respond_to do |format|
+    #   format.html # new.html.erb
+    #   format.json { render json: @move }
+    # end
+  end
+  
 
   # GET /moves/1/edit
-  def edit
-    @move = Move.find(params[:id])
-  end
+  # def edit
+  #   @move = Move.find(params[:id])
+  # end
 
   # POST /moves
   # POST /moves.json
@@ -53,7 +60,7 @@ class MovesController < ApplicationController
     end
   end
 
-  
+
 
   # PUT /moves/1
   # PUT /moves/1.json
@@ -62,7 +69,7 @@ class MovesController < ApplicationController
 
     respond_to do |format|
       if @move.update_attributes(params[:move])
-        format.html { redirect_to @move, notice: 'Move was successfully updated.' }
+        format.html { redirect_to new_game_move, notice: 'Move was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -73,15 +80,15 @@ class MovesController < ApplicationController
 
   # DELETE /moves/1
   # DELETE /moves/1.json
-  def destroy
-    @move = Move.find(params[:id])
-    @move.destroy
+  # def destroy
+  #   @move = Move.find(params[:id])
+  #   @move.destroy
 
-    respond_to do |format|
-      format.html { redirect_to moves_url }
-      format.json { head :no_content }
-    end
-  end
+  #   respond_to do |format|
+  #     format.html { redirect_to moves_url }
+  #     format.json { head :no_content }
+  #   end
+  # end
 end
 
 

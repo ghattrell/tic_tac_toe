@@ -3,7 +3,8 @@ class CreateMoves < ActiveRecord::Migration
     create_table :moves do |t|
       t.integer :player_id
       t.string :symbol
-      t.string :cell_chosen
+      t.integer :cell_chosen
+      t.integer :game_id
 
       t.timestamps
     end

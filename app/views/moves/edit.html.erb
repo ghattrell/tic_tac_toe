@@ -2,5 +2,5 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @move %> |
-<%= link_to 'Back', moves_path %>
+<%= link_to 'Show', [@move.game, @move] %> |
+<%= link_to 'Back', game_moves_path(@move.game) %>

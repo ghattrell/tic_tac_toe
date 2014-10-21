@@ -28,7 +28,8 @@ ActiveRecord::Schema.define(:version => 20141020105226) do
   create_table "moves", :force => true do |t|
     t.integer  "player_id"
     t.string   "symbol"
-    t.string   "cell_chosen"
+    t.integer  "cell_chosen"
+    t.integer  "game_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end

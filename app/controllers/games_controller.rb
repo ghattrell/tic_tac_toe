@@ -2,9 +2,7 @@ class GamesController < ApplicationController
   # GET /games
   # GET /games.json
   
-  def make_move
-    @move = Move.create!(cell_chosen: params[:cell_chosen], player_id: current_user.id)
-  end
+  
 
   def index
     @games = Game.all
@@ -19,6 +17,7 @@ class GamesController < ApplicationController
   # GET /games/1.json
   def show
     @game = Game.find(params[:id])
+    @board = @game.build_board
 
     respond_to do |format|
       format.html # show.html.erb
@@ -62,10 +61,6 @@ class GamesController < ApplicationController
     end
   end
 
-  
-
-  # PUT /games/1
-  # PUT /games/1.json
   def update
     @game = Game.find(params[:id])
 

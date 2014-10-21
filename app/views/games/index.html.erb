@@ -23,30 +23,16 @@
     <td><%= game.first_move %></td>
     <td><%= game.next_player %></td>
     <td><%= game.winner %></td>
+    <td><%= link_to 'Show', game %></td>
+    <td><%= link_to 'Edit', edit_game_path(game) %></td>
+    <td><%= link_to 'Destroy', game, method: :delete, data: { confirm: 'Are you sure?' } %></td>
     
   </tr>
 <% end %>
 </table>
 
 <br />
-<table>
-    <tr>
-        <td><div id="a1"><%=button_to '', action= 'make_move'%></div></td>
-        <td><div id="a2"><%=button_to '', action= 'make_move'%></div></td>
-        <td><div id="a3"><%=button_to '', action= 'make_move'%></div></td>
-    </tr>
-    <tr>
-        <td><div id="b1"><%=button_to '', action= 'make_move'%></div></td>
-        <td><div id="b2"><%=button_to '', action= 'make_move'%></div></td>
-        <td><div id="b3"><%=button_to '', action= 'make_move'%></div></td>
-    </tr>
-    <tr>
-        <td><div id="c1"><%=button_to '', action= 'make_move'%></div></td>
-        <td><div id="c2"><%=button_to '', action= 'make_move'%></div></td>
-        <td><div id="c3"><%=button_to '', action= 'make_move'%></div></td>
-    </tr>
 
-</table>
 
 
 
