@@ -23,14 +23,14 @@ class MovesController < ApplicationController
 
   # GET /moves/new
   # GET /moves/new.json
-  def new
-    @move = Move.new
+  # def new
+  #   @move = Move.new
 
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @move }
-    end
-  end
+  #   # respond_to do |format|
+  #   #   format.html # new.html.erb
+  #   #   format.json { render json: @move }
+  #   # end
+  # end
 
   # GET /moves/1/edit
   def edit
@@ -52,6 +52,8 @@ class MovesController < ApplicationController
       end
     end
   end
+
+  
 
   # PUT /moves/1
   # PUT /moves/1.json
@@ -81,3 +83,5 @@ class MovesController < ApplicationController
     end
   end
 end
+
+

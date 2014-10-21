@@ -1,6 +1,11 @@
 class GamesController < ApplicationController
   # GET /games
   # GET /games.json
+  
+  def make_move
+    @move = Move.create!(cell_chosen: params[:cell_chosen], player_id: current_user.id)
+  end
+
   def index
     @games = Game.all
 
@@ -42,6 +47,10 @@ class GamesController < ApplicationController
   def create
     @game = Game.new(params[:game])
 
+    @game.player1_id = current_user.id
+
+    
+
     respond_to do |format|
       if @game.save
         format.html { redirect_to @game, notice: 'Game was successfully created.' }
@@ -52,6 +61,8 @@ class GamesController < ApplicationController
       end
     end
   end
+
+  
 
   # PUT /games/1
   # PUT /games/1.json
@@ -81,3 +92,10 @@ class GamesController < ApplicationController
     end
   end
 end
+
+  # def computer_has_to_move
+  # if player1_id != 0 && player2_id != 0 do
+  # end
+  # end  
+  
+

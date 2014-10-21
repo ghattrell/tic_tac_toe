@@ -10,31 +10,56 @@
   <%= @game.player2_id %>
 </p>
 
-<p>
+<!-- <p>
   <b>Total games:</b>
-  <%= @game.total_games %>
+  <%#= @game.total_games %>
 </p>
 
 <p>
   <b>Name:</b>
-  <%= @game.name %>
+  <%#= @game.name %>
 </p>
 
 <p>
   <b>First move:</b>
-  <%= @game.first_move %>
+  <%#= @game.first_move %>
 </p>
 
 <p>
   <b>Next player:</b>
-  <%= @game.next_player %>
+  <%#= @game.next_player %>
 </p>
 
 <p>
   <b>Winner:</b>
-  <%= @game.winner %>
-</p>
+  <%#= @game.winner %>
+</p> -->
 
 
-<%= link_to 'Edit', edit_game_path(@game) %> |
-<%= link_to 'Back', games_path %>
+
+<!-- I would love to make a hidden_field within the table below so that that there is an associated value with each cell. I can't work out the syntax to to do that. I can give it a value by inputting an integer where my empty string is, but I don't want that to appear on the page. Then you obviously need to send that value to an action inside the controller. -->  
+
+
+<br />
+  <table>
+
+    <tr>
+        <td><%=link_to new_game_move_path(@game, cell_chosen: 0) do %><div></div><% end %></td>
+        <td><%=link_to new_game_move_path(@game, cell_chosen: 1) do %><div></div><% end %></td>
+        <td><%=link_to new_game_move_path(@game, cell_chosen: 2) do %><div></div><% end %></td>
+    </tr>
+    <tr>
+        <td><%=link_to new_game_move_path(@game, cell_chosen: 3) do %><div></div><% end %></td>
+        <td><%=link_to new_game_move_path(@game, cell_chosen: 4) do %><div></div><% end %></td>
+        <td><%=link_to new_game_move_path(@game, cell_chosen: 5) do %><div></div><% end %></td>
+    </tr>
+    <tr>
+        <td><%=link_to new_game_move_path(@game, cell_chosen: 6) do %><div></div><% end %></td>
+        <td><%=link_to new_game_move_path(@game, cell_chosen: 7) do %><div></div><% end %></td>
+        <td><%=link_to new_game_move_path(@game, cell_chosen: 8) do %><div></div><% end %></td>
+    </tr>
+
+  </table>
+
+<%#= link_to 'Edit', edit_game_path(@game) %> 
+<%#= link_to 'Back', games_path %>

@@ -12,33 +12,15 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :player1_id %><br />
-    <%= f.number_field :player1_id %>
-  </div>
-  <div class="field">
-    <%= f.label :player2_id %><br />
-    <%= f.number_field :player2_id %>
-  </div>
-  <div class="field">
-    <%= f.label :total_games %><br />
-    <%= f.number_field :total_games %>
-  </div>
-  <div class="field">
     <%= f.label :name %><br />
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :first_move %><br />
-    <%= f.number_field :first_move %>
+    <%= f.label :player2_id %><br />
+    <%= f.collection_select :player2_id, User.all, :id, :first_name %>
   </div>
-  <div class="field">
-    <%= f.label :next_player %><br />
-    <%= f.number_field :next_player %>
-  </div>
-  <div class="field">
-    <%= f.label :winner %><br />
-    <%= f.number_field :winner %>
-  </div>
+  
+ 
   <div class="actions">
     <%= f.submit %>
   </div>

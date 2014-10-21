@@ -1,14 +1,20 @@
 TicTacToe::Application.routes.draw do
+  resources :sessions
+
   resources :scores
 
-
-  resources :moves
-
-
-  resources :games
+  resources :games do 
+    resources :moves
+  end
 
 
   resources :users
+
+  get "/logout", to: "sessions#destroy"
+
+  root :to => 'games#index'
+
+  
 
 
   # The priority is based upon order of creation:

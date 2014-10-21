@@ -1,0 +1,8 @@
+table div {
+  height: 50px;
+  width: 50px;
+}
+
+table, td {
+  border: solid black 1px;
+} 

@@ -6,6 +6,12 @@ gem 'rails', '3.2.19'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'pg'
+gem 'httparty'
+gem 'carrierwave', '0.9.0'
+gem 'rmagick'
+# gem 'cancancan', '~> 1.9'
+gem 'ransack'
+gem 'bcrypt-ruby', '~> 3.0.0'
 
 group :development, :test do
   gem 'pry-rails'
