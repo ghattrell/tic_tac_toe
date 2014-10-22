@@ -51,9 +51,19 @@ class Game < ActiveRecord::Base
     end
   end
 
-  def your_turn?(last_turn_id)  
-    currentuser.id == last_turn_id
+  def can_move?(next_player)
+    last_move = self.moves.last
+    return true if last_move.nil?
+    next_player.id != last_move.player_id
   end
+
+  def computer_has_to_move?
+    if player1_id != 0 && player2_id == 0
+  end
+
+  
+
+
 
 
 

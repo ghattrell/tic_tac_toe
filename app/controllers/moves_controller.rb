@@ -26,7 +26,7 @@ class MovesController < ApplicationController
   def new
     @move = Move.create!(cell_chosen: params[:cell_chosen].to_i, player_id: current_user.id, game_id: params[:game_id])
     @game = Game.find params[:game_id]
-    last_move_id = Move.last.player_id
+     # = Move.last.player_id
     current_moves_array = (@game.moves.where(player_id: current_user.id).pluck(:cell_chosen)).to_set
     if @game.player_has_won?(current_moves_array)
       #Ternary operator to decide loser

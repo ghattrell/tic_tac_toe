@@ -36,20 +36,31 @@
 </p> -->
 
 
-
-<!-- I would love to make a hidden_field within the table below so that that there is an associated value with each cell. I can't work out the syntax to to do that. I can give it a value by inputting an integer where my empty string is, but I don't want that to appear on the page. Then you obviously need to send that value to an action inside the controller. -->  
-
 <div class="board">
-  <% @board.each_with_index do |square, index| %>
-    <% if square == 'X' %>
-      <%= image_tag 'cross.jpg', class: 'square-link' %>
-    <% elsif square == '0' %>
-      <%= image_tag 'nought.jpg', class: 'square-link'  %>
-    <% else %>
-      <%= link_to '', new_game_move_path(@game, cell_chosen: index), class: 'square-link' %>
+    <% @board.each_with_index do |square, index| %>
+      <% if square == 'X' %>
+        <%= image_tag 'cross.jpg', class: 'square-link' %>
+      <% elsif square == '0' %>
+        <%= image_tag 'nought.jpg', class: 'square-link'  %>
+      <% else %>
+        <% if @game.can_move?(current_user) %>
+          <%= link_to '', new_game_move_path(@game, cell_chosen: index), class: 'square-link' %>
+        <% else %>
+          <%= image_tag 'whitebackground.jpg', class: 'square-link'%>
+        <% end %>
+      <% end %>
     <% end %>
-  <% end %>
+    
+
+
+
 </div>
+
+
+
+    
+
+  
 
 
 <%#= link_to 'Edit', edit_game_path(@game) %> 
