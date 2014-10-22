@@ -26,11 +26,29 @@ class MovesController < ApplicationController
   def new
     @move = Move.create!(cell_chosen: params[:cell_chosen].to_i, player_id: current_user.id, game_id: params[:game_id])
     @game = Game.find params[:game_id]
+    last_move_id = Move.last.player_id
+    current_moves_array = (@game.moves.where(player_id: current_user.id).pluck(:cell_chosen)).to_set
+    if @game.player_has_won?(current_moves_array)
+      #Ternary operator to decide loser
+      loser = @game.player1_id == current_user.id ? @game.player2_id : @game.player1_id
+      score = Score.create!(game_id: params[:game_id], winner_id: current_user.id, loser_id: loser, draw: nil)
+      flash[:notice] = "Winner Winner Chicken Dinner"
+      redirect_to @game
+    elsif @game.draw?
+      flash[:notice] = "Game was a draw try again"
+      score = Score.create!(game_id: params[:game_id], winner_id: nil, loser_id: nil, draw: 1)
+      redirect_to @game
+    else 
+      redirect_to @game
+    end
     
+    
+
+
     #Check won
     #Check draw
     #If neither redirect_to @game
-    redirect_to @game
+    # redirect_to @game
 
     #   respond_to do |format|
     #   format.html # new.html.erb

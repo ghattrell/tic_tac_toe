@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(:version => 20141020105226) do
   end
 
   create_table "scores", :force => true do |t|
+    t.integer  "game_id"
     t.integer  "winner_id"
     t.integer  "loser_id"
     t.integer  "draw"

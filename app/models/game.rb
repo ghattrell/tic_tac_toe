@@ -12,17 +12,7 @@ class Game < ActiveRecord::Base
   # @board = [nil, nil, nil, nil, nil, nil, nil, nil, nil]
   # @takensquares = []
 
-  # @winning_moves  = [
-  #     [ 0, 1, 2], 
-  #     [ 3, 4, 5], 
-  #     [ 6, 7, 8], 
-  #     [ 0, 3, 6], 
-  #     [ 1, 4, 7], 
-  #     [ 2, 5, 8], 
-  #     [ 0, 4, 8], 
-  #     [ 6, 4, 2]]
-
-  # end
+  
 
   # def player_symbol
   #   @player1_symbol = rand() > 0.5 ? 'X' : 0
@@ -43,13 +33,32 @@ class Game < ActiveRecord::Base
       if move.player_id == self.player1_id
         board[move.cell_chosen] = "X"
       else
-        board[move.cell_chosen] = "O"
+        board[move.cell_chosen] = "0"
       end
     end
       board
   end
 
-   
+  def player_has_won?(current_moves_array)
+      @winning_moves  = [[ 0, 1, 2], [ 3, 4, 5], [ 6, 7, 8], [ 0, 3, 6], [ 1, 4, 7], [ 2, 5, 8], [ 0, 4, 8], [ 6, 4, 2]].to_set
+      @winning_moves.any? {|subset| current_moves_array.superset? subset.to_set}
+  end
+
+
+
+  def draw?
+    if self.moves == 9
+    end
+  end
+
+  def your_turn?(last_turn_id)  
+    currentuser.id == last_turn_id
+  end
+
+
+
+
+
    
 
    
