@@ -12,7 +12,14 @@ TicTacToe::Application.routes.draw do
 
   get "/logout", to: "sessions#destroy"
 
+  get "/win", to: "results#win"
+  get "/draw", to: 'results#draw'
+  get "/loss", to: 'results#loss'
+
+
   root :to => 'games#index'
+
+
 
   
 
