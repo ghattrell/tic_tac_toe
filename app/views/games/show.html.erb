@@ -2,12 +2,12 @@
 
 <p>
   <b>Player1:</b>
-  <%= @game.player1_id %>
+  <%= User.find(@game.player1_id).first_name %>
 </p>
 
 <p>
   <b>Player2:</b>
-  <%= @game.player2_id %>
+  <%= User.find(@game.player2_id).first_name %>
 </p>
 
 <!-- <p>
@@ -46,7 +46,7 @@
         <% if @game.can_move?(current_user) %>
           <%= link_to '', new_game_move_path(@game, cell_chosen: index), class: 'square-link' %>
         <% else %>
-          <%= image_tag 'whitebackground.jpg', class: 'square-link'%>
+          <%= image_tag 'black.jpeg', class: 'square-link'%>
         <% end %>
       <% end %>
     <% end %>

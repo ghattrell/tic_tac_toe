@@ -4,10 +4,7 @@
   <tr>
     <th>Player1</th>
     <th>Player2</th>
-    <th>Total games</th>
     <th>Name</th>
-    <th>First move</th>
-    <th>Next player</th>
     <th>Winner</th>
     <th></th>
     <th></th>
@@ -16,13 +13,14 @@
 
 <% @games.each do |game| %>
   <tr>
-    <td><%= game.player1_id %></td>
-    <td><%= game.player2_id %></td>
-    <td><%= game.total_games %></td>
+    <td><%= User.find(game.player1_id).first_name %></td>
+    <td><%= User.find(game.player2_id).first_name %></td>
     <td><%= game.name %></td>
-    <td><%= game.first_move %></td>
-    <td><%= game.next_player %></td>
-    <td><%= game.winner %></td>
+    <% if game.score %>
+        <td><%= (User.find(game.score.winner_id).first_name if game.score.winner_id)  || 'no winner' %></td>
+    <% else%>
+        <td>unfinished</td>
+    <% end %>
     <td><%= link_to 'Show', game %></td>
     <td><%= link_to 'Edit', edit_game_path(game) %></td>
     <td><%= link_to 'Destroy', game, method: :delete, data: { confirm: 'Are you sure?' } %></td>

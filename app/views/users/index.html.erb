@@ -1,5 +1,7 @@
 <h1>Users</h1>
- <% @users.each do |user| %>
-   <%= user.email %> 
-   <%= user.password_digest %> 
+ <% @users.each do |user| %><br>
+  <%= user.first_name %>        |
+  <%= user.email %>          | 
+  <%= user.win_percentage %> 
+    
  <% end %>

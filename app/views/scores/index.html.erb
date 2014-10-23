@@ -2,6 +2,7 @@
 
 <table>
   <tr>
+    <th>Game<th>
     <th>Winner</th>
     <th>Loser</th>
     <th>Draw</th>
@@ -12,8 +13,14 @@
 
 <% @scores.each do |score| %>
   <tr>
-    <td><%= score.winner_id %></td>
-    <td><%= score.loser_id %></td>
+    <td><%= Game.find(score.game_id).name %></td>
+    <% if score.winner_id != nil %>
+    <td><%= User.find(score.winner_id).first_name %></td>
+    <td><%= User.find(score.loser_id).first_name %></td>
+    <% else %>
+    <td>unfinished</td>
+    <td>unfinished</td>
+    <% end %>
     <td><%= score.draw %></td>
     <td><%= link_to 'Show', score %></td>
     <td><%= link_to 'Edit', edit_score_path(score) %></td>

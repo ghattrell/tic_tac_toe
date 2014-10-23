@@ -12,33 +12,15 @@
 
 <p>
   <b>Image:</b>
-  <%= @user.image %>
+  <%= image_tag @user.image_url.to_s %>
 </p>
 
-<p>
-  <b>Wins:</b>
-  <%= @user.wins %>
-</p>
-
-<p>
-  <b>Losses:</b>
-  <%= @user.losses %>
-</p>
-
-<p>
-  <b>Draws:</b>
-  <%= @user.draws %>
-</p>
 
 <p>
   <b>Email:</b>
   <%= @user.email %>
 </p>
 
-<p>
-  <b>Password digest:</b>
-  <%= @user.password_digest %>
-</p>
 
 <p>
   <b>Win percentage:</b>
