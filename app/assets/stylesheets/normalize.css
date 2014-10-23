@@ -251,8 +251,7 @@ button,
 input,
 optgroup,
 select,
-textarea {
-  color: inherit; /* 1 */
+textarea {/* 1 */
   font: inherit; /* 2 */
   margin: 0; /* 3 */
 }

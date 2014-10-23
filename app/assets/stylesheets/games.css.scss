@@ -1,8 +1,114 @@
 // Place all the styles related to the Games controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+/* --- utilities ---
+font-family: 'Nixie One', cursive;
+font-family: 'Poiret One', cursive;
+font-family: 'Oxygen', sans-serif;
+font-family: 'Handlee', cursive;
+font-family: 'Merienda', cursive;
+font-family: 'Ovo', serif;
+font-family: 'Lily Script One', cursive;
+font-family: 'Tauri', sans-serif;
+font-family: 'Marcellus SC', serif;
+background-color: rgba(255, 255, 255, 0.8);
+background-color: rgba(181, 38, 34, 1.0);
+color: rgba(181, 38, 34, 1.0);
+*/
+
+*{
+  font-family: 'Poiret One', cursive;
+}
+
+body{
+  background-color: black;
+}
+
+header{
+  background-image: url('samurai.jpg');
+  background-size: 120%;
+  background-repeat: no-repeat;
+  height:400px;
+  margin-top:10px;
+  background-position: center;
+  border-bottom: 2px solid black;
+  border-top: 2px solid black;
+  font-size: 4em;
+  color: white;
+  padding-left: 5%;
+  letter-spacing: 1.5;
+}
+
+.main_content{
+  width:90%;
+  margin-right: auto;
+  margin-left: auto;
+  padding-bottom: 50px;
+}
+
+table {
+  margin-left: auto;
+  margin-right: auto;
+  width: 60%;
+  border:none;
+  border-radius: 30px;
+}
+
+table td{
+  border:white;
+  text-align: center;
+  padding:2px;
+}
+
+table th{
+  border:white;
+  font-size: 1.5em;
+  width: 70px;
+}
+
+header a{
+  font-size: 3rem;
+}
+
+header p{
+  font-size: 1rem;
+}
+
+header h1{
+  font-family: 'Ovo', serif;
+  font-weight: bolder;
+  color: white;
+  margin-top: 250px;
+}
+
+footer{
+  height:30px;
+  position:fixed;
+  bottom:0;
+  background-color: rgba(255, 255, 255, 0.8);
+  width:100%;
+  margin-bottom: 0;
+  text-align: center;
+  border-top:solid black 1px;
+  padding-top: 10px;
+  }
+
+p{
+  vertical-align: center;
+  text-align: center;
+}
+
+h1{
+  color: rgba(181, 38, 34, 1.0);
+}
+
 .board{
-  width:50%;
+  width:60%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 80px;
 }
 
 .square-link{
@@ -10,4 +116,35 @@
   width:200px;
   height:200px;
   border: 1px solid grey;
+  border-radius: 20px;
+}
+
+.square-link:hover{
+  background-color: rgba(181, 38, 34, 1.0);
+}
+
+a{
+  text-decoration: none;
+  font-weight: bolder;
+  color:white;
+}
+
+a:hover{
+  color: rgba(181, 38, 34, 1.0);
+}
+
+.flash-message{
+color: black;
+}
+
+.submit {
+border-radius:30px;
+color:black;
+}
+
+input{
+  border-radius: 5px;
+  border:none;
+  margin-top: 5px;
+  color: black;
 }

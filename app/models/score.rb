@@ -3,10 +3,10 @@ class Score < ActiveRecord::Base
 
   belongs_to :game
 
-  def player_wins
-    self.group(:winner_id).count.each do |k,v|
-      puts "#{User.find(k).first_name} -> #{v} wins" if k.present?
-  end
+  # def player_wins
+  #   self.group(:winner_id).count.each do |k,v|
+  #     puts "#{User.find(k).first_name} -> #{v} wins" if k.present?
+  # end
 end
 
   

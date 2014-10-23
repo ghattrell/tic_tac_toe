@@ -88,17 +88,28 @@ class Game < ActiveRecord::Base
   #   if move.nil?
   #     @index = index
 
+  # def computer_makes_move
+  #   # if self.player1_id == self.moves.last.player_id
+  #   index = [0, 1, 2, 3, 4, 5, 6, 7, 8]
+  #   number = index.sample
+  #   index.delete(number)
+  #   @board = self.build_board
+  #     if @board[number] != nil
+  #       Move.create!(player_id: User.first.id, game_id: self.id, cell_chosen: number)
+  #     else
+  #       computer_makes_move
+  #     end
+  # end
+
   def computer_makes_move
-    # if self.player1_id == self.moves.last.player_id
-    index = [0, 1, 2, 3, 4, 5, 6, 7, 8]
-    number = index.sample
-    index.delete(number)
-    @board = self.build_board
-      if @board[number] != nil
-        Move.create!(player_id: User.first.id, game_id: self.id, cell_chosen: number)
-      else
-        computer_makes_move
-      end
+      index = [0, 1, 2, 3, 4, 5, 6, 7, 8]
+      number = index.sample
+      @board = self.build_board
+        if @board[number] == nil
+          Move.create!(player_id: User.first.id, game_id: self.id, cell_chosen: number)
+        else
+          computer_makes_move
+        end
   end
 
 

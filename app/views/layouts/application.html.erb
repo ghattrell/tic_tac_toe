@@ -5,22 +5,35 @@
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+  <link href='http://fonts.googleapis.com/css?family=Nixie+One|Marcellus+SC|Tauri|Poiret+One|Lily+Script+One|Ovo|Oxygen|Handlee|Merienda' rel='stylesheet' type='text/css'>
 </head>
-<body>
-  <% flash.each do |name, msg| %>
+
+<header>
+  
+    <p><% flash.each do |name, msg| %>
       <div class="flash-message flash-message-<%= name %>">
         <%= msg %>
       </div>
-    <% end %>
+    <% end %></p>
 
     <% if current_user %>
       Hello <%= current_user.email %>
-      <%= link_to "Logout", logout_path %>
+      <br><br><br><%= link_to "Logout", logout_path %>
     <% else %>
       <%= link_to "Login", new_session_path %> or <%= link_to "Signup", new_user_path %>
     <% end %>
 
-<%= yield %>
+    <h1>Tic Tac Toe</h1>
+</header>
 
+
+<body>
+  <div class="main_content">
+    <%= yield %>
+  </div>
 </body>
+
+<footer>
+Copywright Big G Games
+</footer>
 </html>
