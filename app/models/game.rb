@@ -28,15 +28,15 @@ class Game < ActiveRecord::Base
   #   @move
 
   def build_board
-    board = Array.new(9)
+    @board = Array.new(9)
     self.moves.each do |move|
       if move.player_id == self.player1_id
-        board[move.cell_chosen] = "X"
+        @board[move.cell_chosen] = "X"
       else
-        board[move.cell_chosen] = "0"
+        @board[move.cell_chosen] = "0"
       end
     end
-      board
+      @board
   end
 
   def player_has_won?(current_moves_array)
@@ -44,12 +44,24 @@ class Game < ActiveRecord::Base
       @winning_moves.any? {|subset| current_moves_array.superset? subset.to_set}
   end
 
+  def computer_has_won?(computer_moves_array)
+    @winning_moves  = [[ 0, 1, 2], [ 3, 4, 5], [ 6, 7, 8], [ 0, 3, 6], [ 1, 4, 7], [ 2, 5, 8], [ 0, 4, 8], [ 6, 4, 2]].to_set
+    @winning_moves.any? {|subset| computer_moves_array.superset? subset.to_set}
+  end
+
+
 
 
   def draw?
-    if self.moves == 9
-    end
+   self.moves == 9
   end
+
+  def last_player?
+    last_move = self.moves.last
+    return false if last_move.nil?
+    last_move.player_id
+  end
+
 
   def can_move?(next_player)
     last_move = self.moves.last
@@ -58,10 +70,46 @@ class Game < ActiveRecord::Base
   end
 
   def computer_has_to_move?
-    if player1_id != 0 && player2_id == 0
+    self.player2_id == 1
   end
 
-  
+
+  def is_tile_free?
+  end
+
+  # def build_board_with_computer
+  #   board = Array.new(9)
+  #   self.moves.each do |move|
+  #     if move.player_id == self.player1_id
+  #       board[move.cell_chosen] = "X"
+  #       board[] 
+
+  # @board.each_with_index.do |move, index|
+  #   if move.nil?
+  #     @index = index
+
+  def computer_makes_move
+    # if self.player1_id == self.moves.last.player_id
+    index = [0, 1, 2, 3, 4, 5, 6, 7, 8]
+    number = index.sample
+    @board = self.build_board
+      if @board[number] == nil
+        Move.create!(player_id: User.first.id, game_id: self.id, cell_chosen: number)
+      else
+        computer_makes_move
+      end
+  end
+
+
+
+
+
+
+
+
+
+
+
 
 
 

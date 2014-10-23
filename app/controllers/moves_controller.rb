@@ -25,9 +25,13 @@ class MovesController < ApplicationController
   # GET /moves/new.json
   def new
     @move = Move.create!(cell_chosen: params[:cell_chosen].to_i, player_id: current_user.id, game_id: params[:game_id])
+
     @game = Game.find params[:game_id]
+
+    
      # = Move.last.player_id
     current_moves_array = (@game.moves.where(player_id: current_user.id).pluck(:cell_chosen)).to_set
+    computer_moves_array = (@game.moves.where(player_id: @game.player2_id).pluck(:cell_chosen)).to_set
     if @game.player_has_won?(current_moves_array)
       #Ternary operator to decide loser
       loser = @game.player1_id == current_user.id ? @game.player2_id : @game.player1_id
@@ -38,8 +42,27 @@ class MovesController < ApplicationController
       flash[:notice] = "Game was a draw try again"
       score = Score.create!(game_id: params[:game_id], winner_id: nil, loser_id: nil, draw: 1)
       redirect_to @game
-    else 
-      redirect_to @game
+    else
+      if @game.computer_has_to_move?
+        @game.computer_makes_move
+        #games_moves_array no longer exists
+
+        #winner_id now = 1 it always does for the computer 
+        if @game.computer_has_won?(computer_moves_array)
+          #Ternary operator to decide loser
+          loser = @game.player1_id == current_user.id ? @game.player1_id : @game.player2_id
+          score = Score.create!(game_id: params[:game_id], winner_id: @game.player2_id, loser_id: loser, draw: nil)
+          flash[:notice] = "Computer has beaten you"
+          redirect_to @game and return
+        elsif @game.draw?
+          flash[:notice] = "Game was a draw try again"
+          score = Score.create!(game_id: params[:game_id], winner_id: nil, loser_id: nil, draw: 1)
+          redirect_to @game and return
+        else
+          redirect_to @game and return
+        end
+      end 
+      redirect_to @game 
     end
     
     

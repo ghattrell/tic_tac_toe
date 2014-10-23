@@ -48,6 +48,7 @@ class GamesController < ApplicationController
 
     @game.player1_id = current_user.id
 
+
     
 
     respond_to do |format|
