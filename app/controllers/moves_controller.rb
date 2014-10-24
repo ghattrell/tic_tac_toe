@@ -36,7 +36,8 @@ class MovesController < ApplicationController
       #Ternary operator to decide loser
       loser = @game.player1_id == current_user.id ? @game.player2_id : @game.player1_id
       score = Score.create!(game_id: params[:game_id], winner_id: current_user.id, loser_id: loser, draw: nil)
-      redirect_to win_path
+      flash[:notice] = "Well done #{User.find(current_user.id).first_name} you are the winner"
+      redirect_to @game
     elsif @game.draw?
       flash[:notice] = "Game was a draw try again"
       score = Score.create!(game_id: params[:game_id], winner_id: nil, loser_id: nil, draw: 1)
@@ -52,6 +53,7 @@ class MovesController < ApplicationController
           #Ternary operator to decide loser
           loser = @game.player1_id == current_user.id ? @game.player1_id : @game.player2_id
           score = Score.create!(game_id: params[:game_id], winner_id: @game.player2_id, loser_id: loser, draw: nil)
+          flash[:notice] = "The computer has beaten you!"
           redirect_to @game and return
         elsif @game.draw?
           score = Score.create!(game_id: params[:game_id], winner_id: nil, loser_id: nil, draw: 1)

@@ -17,7 +17,7 @@ TicTacToe::Application.routes.draw do
   get "/loss", to: 'results#loss'
 
 
-  root :to => 'games#index'
+  root :to => 'sessions#new'
 
 
 

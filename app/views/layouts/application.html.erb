@@ -10,11 +10,6 @@
 
 <header>
   
-    <p><% flash.each do |name, msg| %>
-      <div class="flash-message flash-message-<%= name %>">
-        <%= msg %>
-      </div>
-    <% end %></p>
 
     <% if current_user %>
       Hello <%= current_user.email %>
