@@ -1,7 +1,17 @@
 <h1>Users</h1>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Win Percentage</th>
+  </tr>
  <% @users.each do |user| %><br>
-  <%= user.first_name %>        |
-  <%= user.email %>          | 
-  <%= user.win_percentage %> 
-    
- <% end %>
+  <tr>
+  <td><%= user.first_name %></td>        
+  <td><%= user.email %></td>           
+  <td><%= user.win_percentage %></td>
+  </tr>
+  <% end %>
+</table>
+
+<%= link_to 'New Game', new_game_path %>
